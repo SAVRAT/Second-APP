@@ -24,6 +24,10 @@ import android.view.Menu;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    Intent home;
+    Intent settings;
+    Intent central_module;
+    Intent device_list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,10 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        home = new Intent(this, MainActivity.class);
+        settings = new Intent(this, SettingsActivity.class);
+        central_module = new Intent(this, Central_module.class);
+        device_list = new Intent(this, Device_list.class);
     }
 
     @Override
@@ -89,16 +97,14 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            System.out.println("Click Home");
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_device_list) {
-
+        if (id == R.id.nav_device_list) {
+            startActivity(device_list);
         } else if (id == R.id.nav_centre_mod) {
-
+            System.out.println("Click Central module");
+            startActivity(central_module);
         } else if (id == R.id.nav_tools) {
-
+            System.out.println("Click Settings");
+            startActivity(settings);
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
